@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Valid Task Gathering &#8212; BFE Task Assignment 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="On/Off Switch Task Assignment" href="onoff.html" />
+    <link rel="prev" title="Classes" href="classes.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="valid-task-gathering">
+<h1>Valid Task Gathering<a class="headerlink" href="#valid-task-gathering" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>This section includes documentation for the Path Algorithm used to gather valid paths as well as other functions used to complete the gathering process in bulk.</p>
+<div class="section" id="time-constrained-k-shortest-path-algorithm">
+<h2>Time Constrained K Shortest Path Algorithm<a class="headerlink" href="#time-constrained-k-shortest-path-algorithm" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="sig-name descname">time_constrained_shortest_path(G, valid_paths, start_station, end_station, start_time, fulltime, minimum_task, maximum_task):</code></dt>
+<dd><p>Gathers all valid paths for a given graph by repeating the process of extending the shortest path from one node to the all possible next nodes first, evaluating the extended paths, then storing those that have yet reached the destination, discarding those that violate constraints, and outputting those that are valid and have reached the destination</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<a class="reference internal" href="classes.html#Graph" title="Graph"><em>Graph</em></a>) – graph of all samples for a given borough for a given day type</p></li>
+<li><p><strong>valid_paths</strong> (<a class="reference internal" href="classes.html#MinBinaryHeap" title="MinBinaryHeap"><em>MinBinaryHeap</em></a>) – minimum binary heap for storing the valid paths</p></li>
+<li><p><strong>start_station</strong> (<em>string</em>) – name of station where the path starts, “LIC”</p></li>
+<li><p><strong>end_station</strong> (<em>string</em>) – name of station where the path ends, “LIC”</p></li>
+<li><p><strong>start_time</strong> (<em>list</em>) – [hour, minute] shift starting time</p></li>
+<li><p><strong>fulltime</strong> (<em>int</em>) – 1 if full-time, 0 if part-time</p></li>
+<li><p><strong>minimum_task</strong> (<em>int</em>) – minimum number of tasks that have to be performed in a day</p></li>
+<li><p><strong>maximum_task</strong> (<em>int</em>) – maxmimum number of tasks that have to be performed in a day</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>A minimum binary heap updated with valid paths</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="valid-path-gathering">
+<h2>Valid Path Gathering<a class="headerlink" href="#valid-path-gathering" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="sig-name descname">setup_graphs(filename, boroughs, gui = None):</code></dt>
+<dd><p>Builds graphs for each day type using the graph of each borough and stores the elements as a dictionary of dictionaries with day types, and boroughs as the key and corresponding graphs as the value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>string</em>) – name of file that stores all samples</p></li>
+<li><p><strong>boroughs</strong> (<em>list</em>) – list containing all five boroughs abbreviations</p></li>
+<li><p><strong>gui</strong> – gui object for gui output</p></li>
+</ul>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>tkinter.Text or None</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dictionary of dictionaries with day types, and boroughs as keys and the corresponding graphs as values</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">get_checker_tasks(graphs, start_station, end_station, minimum_task, maximum_task, checker, daytype, time_increment, time_range):</code></dt>
+<dd><p>Retrieves valid paths for a given checker from the graph and updates the checker’s valid path heaps</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graphs</strong> (<em>dictionary</em>) – graphs of the given day type for all boroughs</p></li>
+<li><p><strong>start_station</strong> (<em>string</em>) – station checker starts at</p></li>
+<li><p><strong>end_station</strong> (<em>string</em>) – station checker ends at</p></li>
+<li><p><strong>minimum_task</strong> (<em>int</em>) – minimum number of tasks that a checker must complete in a day</p></li>
+<li><p><strong>maximum_task</strong> (<em>int</em>) – maximum number of tasks a checker is allowed to complete in a day, constrains path lengths to make runtime shorter</p></li>
+<li><p><strong>checker</strong> (<em>string</em>) – checker ID</p></li>
+<li><p><strong>daytype</strong> (<em>string</em>) – weekday, saturday or sunday</p></li>
+<li><p><strong>time_increment</strong> (<em>float</em>) – increments of the checker starting time in hours</p></li>
+<li><p><strong>time_range</strong> (<em>float</em>) – allowed starting time window duration in hours</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">get_allchecker_tasks(checkerlist, filename, start_station, end_station, minimum_task, maximum_task, boroughs, time_increment, time_range, gui=None):</code></dt>
+<dd><p>Retrieves all valid paths for all checkers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkerlist</strong> (<a class="reference internal" href="classes.html#CheckerList" title="CheckerList"><em>CheckerList</em></a>) – CheckerList object</p></li>
+<li><p><strong>filename</strong> (<em>string</em>) – name of sample file</p></li>
+<li><p><strong>start_station</strong> (<em>string</em>) – station checker starts at</p></li>
+<li><p><strong>end_station</strong> (<em>string</em>) – station checker ends at</p></li>
+<li><p><strong>minimum_task</strong> (<em>int</em>) – minimum number of tasks that a checker must complete in a day</p></li>
+<li><p><strong>maximum_task</strong> (<em>int</em>) – maximum number of tasks a checker is allowed to complete in a day, constrains path lengths to make runtime shorter</p></li>
+<li><p><strong>boroughs</strong> (<em>list</em>) – list of all boroughs</p></li>
+<li><p><strong>time_increment</strong> (<em>float</em>) – increments of the checker starting time in hours</p></li>
+<li><p><strong>time_range</strong> (<em>float</em>) – allowed starting time window duration in hours</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">BFE Task Assignment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quick.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">Utility Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Valid Task Gathering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#time-constrained-k-shortest-path-algorithm">Time Constrained K Shortest Path Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#valid-path-gathering">Valid Path Gathering</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="onoff.html">On/Off Switch Task Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genetic.html">Genetic Algorithm</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="classes.html" title="previous chapter">Classes</a></li>
+      <li>Next: <a href="onoff.html" title="next chapter">On/Off Switch Task Assignment</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Yiming Huang, Nelson Pereira, Thierry Zhao, Yixin Gu, William Zhang.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/graph.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

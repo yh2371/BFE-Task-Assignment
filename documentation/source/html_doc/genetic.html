@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Genetic Algorithm &#8212; BFE Task Assignment 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="On/Off Switch Task Assignment" href="onoff.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="genetic-algorithm">
+<h1>Genetic Algorithm<a class="headerlink" href="#genetic-algorithm" title="Permalink to this headline">¶</a></h1>
+<p>This section contains documentation on functions used to start the genetic algorithm, for documentation on how the individual stages of the genetic algorithm works, please refer to the Generation, Schedule, Week and Day classes.</p>
+<div class="toctree-wrapper compound">
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">genetic(filename, checkerlist, generationSize, numOfReproductions, mutationRate, fitnessThreshold, month=None, year=None):</code></dt>
+<dd><p>Starts genetic algorithm to run for a certain number of reproductions of generations at a given size, returns the individual (schedule) with the best score out of all generations</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>string</em>) – name of sample set file</p></li>
+<li><p><strong>checkerlist</strong> (<a class="reference internal" href="classes.html#CheckerList" title="CheckerList"><em>CheckerList</em></a>) – CheckerList object</p></li>
+<li><p><strong>generationSize</strong> (<em>int</em>) – number of schedules in the generation</p></li>
+<li><p><strong>numOfReproductions</strong> (<em>int</em>) – number of reproductions</p></li>
+<li><p><strong>mutationRate</strong> (<em>float</em>) – the probability of mutation during reproduction for all individuals</p></li>
+<li><p><strong>fitnessThreshold</strong> (<em>float</em>) – the minimum fitness score an individual must have to participate in reproduction (added to the mating pool)</p></li>
+<li><p><strong>month</strong> (<em>int</em>) – month of schedule</p></li>
+<li><p><strong>year</strong> (<em>int</em>) – year of schedule</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Schedule object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">BFE Task Assignment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quick.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">Utility Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph.html">Valid Task Gathering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onoff.html">On/Off Switch Task Assignment</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Genetic Algorithm</a><ul class="simple">
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="onoff.html" title="previous chapter">On/Off Switch Task Assignment</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Yiming Huang, Nelson Pereira, Thierry Zhao, Yixin Gu, William Zhang.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/genetic.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

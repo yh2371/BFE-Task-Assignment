@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>On/Off Switch Task Assignment &#8212; BFE Task Assignment 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Genetic Algorithm" href="genetic.html" />
+    <link rel="prev" title="Valid Task Gathering" href="graph.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="on-off-switch-task-assignment">
+<h1>On/Off Switch Task Assignment<a class="headerlink" href="#on-off-switch-task-assignment" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>This section contains documentation on functions used to start on/off switch task assignment, for documentation on how the task assignment process works, please refer to the Schedule, Week and Day classes.</p>
+<dl class="function">
+<dt>
+<code class="sig-name descname">select_optimal_v2(checkerlist, filename, iterations, gui = None):</code></dt>
+<dd><p>Starts on/off assignment process, returns generated schedule</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkerlist</strong> (<a class="reference internal" href="classes.html#CheckerList" title="CheckerList"><em>CheckerList</em></a>) – CheckerList object</p></li>
+<li><p><strong>filename</strong> – name of sample set file</p></li>
+<li><p><strong>iterations</strong> (<em>int</em>) – number of times on/off assignment is repeated</p></li>
+</ul>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Schedule object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">generate_schedule(checkerlist, filename, iterations, gui = None):</code></dt>
+<dd><p>Schedule generation with feedback on randomly generated sample set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkerlist</strong> (<a class="reference internal" href="classes.html#CheckerList" title="CheckerList"><em>CheckerList</em></a>) – CheckerList object</p></li>
+<li><p><strong>filename</strong> – name of sample set file</p></li>
+<li><p><strong>iterations</strong> (<em>int</em>) – number of times on/off assignment is repeated</p></li>
+<li><p><strong>gui</strong> (<em>tkinter.Text</em><em> or </em><em>None</em>) – gui object for gui output</p></li>
+</ul>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Schedule object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">BFE Task Assignment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quick.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">Utility Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph.html">Valid Task Gathering</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">On/Off Switch Task Assignment</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="genetic.html">Genetic Algorithm</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="graph.html" title="previous chapter">Valid Task Gathering</a></li>
+      <li>Next: <a href="genetic.html" title="next chapter">Genetic Algorithm</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Yiming Huang, Nelson Pereira, Thierry Zhao, Yixin Gu, William Zhang.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/onoff.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

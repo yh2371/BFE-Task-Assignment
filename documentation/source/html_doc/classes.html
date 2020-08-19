@@ -1,0 +1,2799 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Classes &#8212; BFE Task Assignment 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Valid Task Gathering" href="graph.html" />
+    <link rel="prev" title="Utility Functions" href="utility.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="toctree-wrapper compound">
+</div>
+<div class="section" id="classes">
+<h1>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h1>
+<p>This section contains documentation on all classes defined in this project.</p>
+<div class="section" id="graph">
+<h2>Graph<a class="headerlink" href="#graph" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="Graph">
+<em class="property">class </em><code class="sig-name descname">Graph</code><a class="headerlink" href="#Graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Representation of a simple graph using an adjacency map.</p>
+<dl class="function">
+<dt>
+<code class="sig-name descname">__init__(self, directed=True, borough=None, daytype=None):</code></dt>
+<dd><p>Creates an empty graph (undirected, by default):, Graph is directed if optional paramter is set to True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self._vertices</strong> – dictionary of vertices in the graph with station names (string) as keys and Station objects as values</p></li>
+<li><p><strong>self._outgoing</strong> – dictionary dictionaries of outgoing edges in the graph with Station objects as keys and Edge objects as values, Edge = dict[origin][destination]</p></li>
+<li><p><strong>self._incoming</strong> – dictionary dictionaries of incoming edges in the graph with Station objects as keys and Edge objects as values, Edge = dict[destination][origin]</p></li>
+<li><p><strong>self._borough</strong> (<em>string</em>) – borough ID associated to the graph</p></li>
+<li><p><strong>self._daytype</strong> (<em>string</em>) – day type associated to the graph, weekday, saturday, or sunday</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Graph object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_borough(self):</code></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Borough ID of the graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_daytype(self):</code></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Day type of the graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">_validate_vertex(self, v):</code></dt>
+<dd><p>Validates a vertex</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>v</strong> – vertex</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – If vertex is not a Station object</p></li>
+<li><p><strong>ValueError</strong> – If vertex does not belong to the graph</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">is_directed(self):</code></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>True if directed, otherwise False</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">vertex_count(self):</code></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Number of vertices in the graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">vertices(self):</code></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Iterable of Station objects in the graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">edge_count(self):</code></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Number of edges in the graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_edge(self, u, v):</code></dt>
+<dd><p>Gets the edge starting from u and ending at v</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u</strong> (<a class="reference internal" href="#Station" title="Station"><em>Station</em></a>) – origin</p></li>
+<li><p><strong>v</strong> (<a class="reference internal" href="#Station" title="Station"><em>Station</em></a>) – destination</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Edge going from u to v</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">incident_edges(self, v, outgoing=True):</code></dt>
+<dd><p>Returns an iterable of all outgoing incident edges of v</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v</strong> (<a class="reference internal" href="#Station" title="Station"><em>Station</em></a>) – origin</p></li>
+<li><p><strong>outgoing</strong> (<em>bool</em>) – control whether we are looking for incoming or outgoing incident edges, outgoing by default</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Iterable of outgoing incident edges of v</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_vertex(self, station):</code></dt>
+<dd><p>Retrieves the Station object (vertex) associated to the station name, if there’s no such station in the graph, a None type value is returned</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>station</strong> (<em>string</em>) – name of station</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Station object associated to the station name or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">insert_vertex(self, station, coord):</code></dt>
+<dd><p>Insert and return a new vertex (Station object):</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>station</strong> (<em>string</em>) – name of station</p></li>
+<li><p><strong>coord</strong> (<em>list</em>) – [longitude, latitude] list associated to the station</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>New Station object that was inserted into the graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">insert_edge(self, u, v, route = None, arrivaltime = None, departuretime = None, sample_id = None):</code></dt>
+<dd><p>Insert and return a new Edge from u to v</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u</strong> (<em>station</em>) – origin</p></li>
+<li><p><strong>v</strong> (<em>station</em>) – destination</p></li>
+<li><p><strong>arrivaltime</strong> (<em>list</em>) – Time of arrival of route [hour, minute]</p></li>
+<li><p><strong>departuretime</strong> (<em>list</em>) – Time of departure of route[hour, minute]</p></li>
+<li><p><strong>sample_id</strong> (<em>String</em>) – Sample ID</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>New Edge object going from u to v</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">remove_vertex(self, v):</code></dt>
+<dd><p>Remove vertex from graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v</strong> – vertex</p></li>
+<li><p><strong>type</strong> – Station</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">remove_edge(self, u, v):</code></dt>
+<dd><p>Remove edge starting from u and ending at v</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u</strong> (<a class="reference internal" href="#Station" title="Station"><em>Station</em></a>) – origin</p></li>
+<li><p><strong>v</strong> (<a class="reference internal" href="#Station" title="Station"><em>Station</em></a>) – destination</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><blockquote>
+<div><dl class="class">
+<dt id="Station">
+<em class="property">class </em><code class="sig-name descname">Station</code><a class="headerlink" href="#Station" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nested class in Graph. Vertex structure for the graph, representing a bus station in the field</p>
+<dl class="function">
+<dt>
+<code class="sig-name descname">__init__(self, station, coord):</code></dt>
+<dd><p>Creates a Station object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self._station</strong> (<em>string</em>) – station name</p></li>
+<li><p><strong>self._coord</strong> (<em>list</em>) – [long, lat] coordinates of station</p></li>
+<li><p><strong>self._samples=</strong><strong>[</strong><strong>]</strong> (<em>list</em>) – list of Sample objects, representing samples that can be done at this station</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Station object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_lat(self):</code></dt>
+<dd><p>Return latitude of station</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Latitude of station</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_long(self):</code></dt>
+<dd><p>Return longitude of station</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Longitude of station</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">station(self):</code></dt>
+<dd><p>Return station name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Station name string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">samples(self):</code></dt>
+<dd><p>Returns iterable over all samples that can be taken at this station</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List of Sample Objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">insert_sample(self, routename, arrival_time, departure_time, sample_id):</code></dt>
+<dd><p>Creates a new sample object and adds it to the samples list of the Station</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>routename</strong> (<em>string</em>) – name of route taken in the sample</p></li>
+<li><p><strong>arrival_time</strong> (<em>list</em>) – arrival time of sample (round trip) [hour,minute]</p></li>
+<li><p><strong>departure_time</strong> (<em>list</em>) – departure time of sample (round trip) [hour, minute]</p></li>
+<li><p><strong>sample_id</strong> (<em>string</em>) – Sample ID</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="class">
+<dt id="Sample">
+<em class="property">class </em><code class="sig-name descname">Sample</code><a class="headerlink" href="#Sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nested Class in Station. Representation of a roundtrip sample</p>
+<dl class="function">
+<dt>
+<code class="sig-name descname">__init__(self, routename, arrivaltime, departuretime, sample_id):</code></dt>
+<dd><p>Creates new Sample object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self._routename</strong> (<em>string</em>) – name of route taken in the sample</p></li>
+<li><p><strong>self._arrivalTime</strong> (<em>list</em>) – arrival time of sample (round trip) [hour,minute]</p></li>
+<li><p><strong>self._departureTime</strong> (<em>list</em>) – departure time of sample (round trip) [hour, minute]</p></li>
+<li><p><strong>self._sample_id</strong> (<em>string</em>) – Sample ID</p></li>
+<li><p><strong>self._roundtripTime</strong> (<em>int</em>) – round trip duration in minutes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>New Sample object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">routename(self):</code></dt>
+<dd><p>Get route name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Route name string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">roundtriptime(self):</code></dt>
+<dd><p>Get round trip time in minutes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Round trip time in minutes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">departuretime(self):</code></dt>
+<dd><p>Get departure time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[hour, minute] departure time of round trip</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">arrivaltime(self):</code></dt>
+<dd><p>Get arrival time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[hour, minute] arrival time of round trip</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div></div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">calculateroundtrip(self, t1, t2):</code></dt>
+<dd><p>Compute time difference in minutes between time t1 = [h1, m1] and t2 = [h2, m2], t1 later than t2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t1</strong> (<em>list</em>) – starting time [hour, minute]</p></li>
+<li><p><strong>t2</strong> (<em>list</em>) – ending time [hour, minute]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Number of minutes, or -1 if t1 is earlies than t2</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="class">
+<dt id="Edge">
+<em class="property">class </em><code class="sig-name descname">Edge</code><a class="headerlink" href="#Edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nested class in Graph. Edge structure for Graph</p>
+<dl class="function">
+<dt>
+<code class="sig-name descname">__init__(self, u, v):</code></dt>
+<dd><p>Create a new Edge object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self._origin=u</strong> (<a class="reference internal" href="#Station" title="Station"><em>Station</em></a>) – origin</p></li>
+<li><p><strong>self._destination=v</strong> (<a class="reference internal" href="#Station" title="Station"><em>Station</em></a>) – destination</p></li>
+<li><p><strong>self._weight</strong> – dictionary holding the traveling time between the origin and destination stations for two time periods, morning and evening</p></li>
+</ul>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>dictionary</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>New Edge object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">endpoints(self):</code></dt>
+<dd><p>Return end points of the directed edge</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(origin, destination) tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">opposite(self, v):</code></dt>
+<dd><p>Return the vertex on the opposite end of the edge connected to v</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>v</strong> (<a class="reference internal" href="#Station" title="Station"><em>Station</em></a>) – vertex</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Station object connected to v by the Edge</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">weight(self, curr_time):</code></dt>
+<dd><p>Return traveling time on the edge, if its before noon, return the morning summarized traveling time, otherwise return the evening summarized traveling time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>curr_time</strong> (<em>list</em>) – current time of day [hour, minute]</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Traveling time in minutes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">set_weight(self, morning, evening):</code></dt>
+<dd><p>Set the weight of the edge</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>morning</strong> (<em>int</em>) – summarized traveling time before noon in minutes</p></li>
+<li><p><strong>evening</strong> – summarized traveling time after noon in minutes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="minimum-binary-heap">
+<h2>Minimum Binary Heap<a class="headerlink" href="#minimum-binary-heap" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="MinBinaryHeap">
+<em class="property">class </em><code class="sig-name descname">MinBinaryHeap</code><a class="headerlink" href="#MinBinaryHeap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Array representation of a minimum binary heap</p>
+<dl class="function">
+<dt>
+<code class="sig-name descname">__init__(self, idle, start_time):</code></dt>
+<dd><p>Create an initially empty binary heap</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>=</strong><strong> [</strong><strong>]</strong> (<em>self._nodes</em>) – list of Node objects in the heap</p></li>
+<li><p><strong>self._idle</strong> (<em>int</em>) – 1 if ranked by idle time value, 0 if ranked by total time value</p></li>
+<li><p><strong>self._start_time</strong> (<em>list</em>) – fixed starting time of all paths in the heap  [hour, minute]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>New MinBinaryHeap object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_min(self):</code></dt>
+<dd><p>Return Node with minimum value (i.e. root Node):</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Node object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">insert(self, path, unique = None):</code></dt>
+<dd><p>Creates a node to hold the Path object and inserts the new Node into the heap</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<a class="reference internal" href="#Path" title="Path"><em>Path</em></a>) – a set of sequential tasks</p></li>
+<li><p><strong>unique</strong> (<em>float</em><em> or </em><em>None</em>) – uniqueness score, so that the node sets uniqueness score as the value, if None, uniqueness score is not considered in the value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">is_empty(self):</code></dt>
+<dd><p>Checks status of heap</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>True if the heap is empty, False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">extract_min(self):</code></dt>
+<dd><p>Removes the Node with minimum value in the heap and returns the Path object stored in that Node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Path object with smallest value (shortest idle time or total time):</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_starttime(self):</code></dt>
+<dd><p>Returns start time of the heap in [hour, minute] form</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List [hour, minute] representing the start time</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">is_idle(self):</code></dt>
+<dd><p>Checks whether the heap is sorted by idle time or total time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>True if sorted by idle time, False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_node(self, i):</code></dt>
+<dd><p>Returns the node at the ith index in the heap array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – index</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Node object at the ith index of the heap array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_value(self, node):</code></dt>
+<dd><p>Return the value of the Node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node</strong> (<a class="reference internal" href="#Node" title="Node"><em>Node</em></a>) – Node object from the heap</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Int value of the node</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">swap_nodes(self, i, j):</code></dt>
+<dd><p>Swap the two nodes at the indexes i and j in the heap array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> (<em>int</em>) – index of the first node</p></li>
+<li><p><strong>j</strong> (<em>int</em>) – index of the second node</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">upheap(self):</code></dt>
+<dd><p>Update heap after inserting new node in order to maintain min-heap structure</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">downheap(self):</code></dt>
+<dd><p>Update heap after removing min node in order to maintain min-heap structure</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="class">
+<dt id="Node">
+<em class="property">class </em><code class="sig-name descname">Node</code><a class="headerlink" href="#Node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nested class in MinBinaryHeap for storing a single path</p>
+<dl class="function">
+<dt>
+<code class="sig-name descname">__init__(self, path, position):</code></dt>
+<dd><p>Create a new Node object for storing a Path Object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self._path</strong> (<a class="reference internal" href="#Path" title="Path"><em>Path</em></a>) – Path object stored in the node</p></li>
+<li><p><strong>self._position</strong> (<em>int</em>) – index of the Node in the heap array</p></li>
+<li><p><strong>self._unique</strong> (<em>float</em><em> or </em><em>0 by default</em>) – uniqueness score</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>New Node object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_path(self):</code></dt>
+<dd><p>Return Path object stored in the Node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Path object stored in the Node</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_parent(self):</code></dt>
+<dd><blockquote>
+<div><p>Return index of parent node</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_leftchild(self):</code></dt>
+<dd><p>Return index of left child node</p>
+<p>:rtype:int</p>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_rightchild(self):</code></dt>
+<dd><p>Return index of right child node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_position(self):</code></dt>
+<dd><p>Return index of the Node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">set_position(self, i):</code></dt>
+<dd><p>Set the index of the Node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – index</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_unique(self):</code></dt>
+<dd><p>Get uniqueness score of path associated to the Node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or 0 by default</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">set_unique(self, value):</code></dt>
+<dd><p>Set uniqueness score of the Node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> – uniqueness score</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="path">
+<h2>Path<a class="headerlink" href="#path" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="Path">
+<em class="property">class </em><code class="sig-name descname">Path</code><a class="headerlink" href="#Path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Representation of a sequential set of tasks (samples):</p>
+<dl class="function">
+<dt>
+<code class="sig-name descname">__init__(self, path, idleTime, pathTime, time_of_day, lunchbreak = 0, start_time = None):</code></dt>
+<dd><p>Initiate a new Path object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self._idleTime</strong> (<em>int</em>) – total idle time of the path in minutes</p></li>
+<li><p><strong>self._pathTime</strong> (<em>int</em>) – total time of the path in minutes</p></li>
+<li><p><strong>self._path</strong> (<em>list</em>) – list of Task objects in the path</p></li>
+<li><p><strong>self._timeofday</strong> (<em>list</em>) – [hour, minute] time of day tracker used when extending paths</p></li>
+<li><p><strong>self._lunchbreak</strong> (<em>int</em>) – 1 if scheduled, 0 if not scheduled</p></li>
+<li><p><strong>self._uniqueness</strong> (<em>float</em>) – uniqueness score of the path</p></li>
+<li><p><strong>self._starttime</strong> (<em>list</em>) – starting time of the path [hour, minute]</p></li>
+<li><p><strong>self._assigned</strong> (<em>int</em>) – 0 if the Path has been assigned, 1 otherwise</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>New Path object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">toggle_assigned(self, e):</code></dt>
+<dd><p>Change the assigned state of the Path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>e</strong> (<em>int</em>) – state value to change to</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">is_assigned(self):</code></dt>
+<dd><p>Check if the Path has been assigned</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>0 if assigned, 1 otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_starttime(self):</code></dt>
+<dd><p>Get starting time of the Path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[hour, minute] starting time</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_uniqueness(self):</code></dt>
+<dd><p>Get uniqueness score of the Path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Uniqueness score</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">set_uniqueness(self, value):</code></dt>
+<dd><p>Set uniqueness score of the Path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>float</em>) – new uniqueness score</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_idleTime(self):</code></dt>
+<dd><p>Return idle time of the Path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Idle time in minutes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_pathTime(self):</code></dt>
+<dd><p>Return total time of the Path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Total time in minutes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_tasklist(self):</code></dt>
+<dd><p>Return a list of Task objects stored in the Path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List of Task objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_startnode(self):</code></dt>
+<dd><p>Return first task in the Path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Task object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_endnode(self):</code></dt>
+<dd><p>Return last task in the Path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Task object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_timeofday(self):</code></dt>
+<dd><p>Return the time of day when the last Task in the Path is completed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[hour, minute]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">updatetime(self, t):</code></dt>
+<dd><p>Update the time of day once t time has passed, t = [hour, minute]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<em>list</em>) – time passed in the form [hour, minute]</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">updatetotaltime(self, t):</code></dt>
+<dd><p>Update total time of the Path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<em>int</em>) – increased total time in minutes</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">updateidletime(self, t):</code></dt>
+<dd><p>Update idle time of the Path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<em>int</em>) – increased idle time in minutes</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">hadlunchbreak(self):</code></dt>
+<dd><p>Check if a lunchbreak has been included in the Path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>1 if lunchbreak is included, 0 otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">addlunchbreak(self, next_stop, timeofday):</code></dt>
+<dd><p>Add a lunch break at a station to the Path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>next_stop</strong> (<a class="reference internal" href="#Station" title="Station"><em>Station</em></a>) – location of lunch lunchbreak</p></li>
+<li><p><strong>timeofday</strong> – starting time of lunchbreak [hour, minute]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">extend(self, next_stop, sample):</code></dt>
+<dd><p>Extend the Path by adding a new Task of completing a certain Sample at a certain Station</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>next_stop</strong> (<a class="reference internal" href="#Station" title="Station"><em>Station</em></a>) – location of extended Task</p></li>
+<li><p><strong>sample</strong> (<em>string</em><em> or </em><a class="reference internal" href="#Sample" title="Sample"><em>Sample</em></a>) – sample to complete in extended Task, if its “LIC” or lunchbreak, then a string is assigned, otherwise a Sample object is assigned</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>New extended Path object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">numoftasks(self):</code></dt>
+<dd><p>Return the number of Tasks in the Path, excluding the starting and ending points at “LIC”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Number of Tasks</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="class">
+<dt id="Task">
+<em class="property">class </em><code class="sig-name descname">Task</code><a class="headerlink" href="#Task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nested class of Path, containing information on one Sample that needs to be checked</p>
+<dl class="function">
+<dt>
+<code class="sig-name descname">__init__(self, station, sample):</code></dt>
+<dd><p>Initiate new Task object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self._station</strong> (<a class="reference internal" href="#Station" title="Station"><em>Station</em></a>) – location of Task</p></li>
+<li><p><strong>self._sample</strong> (<em>String</em><em> or </em><a class="reference internal" href="#Sample" title="Sample"><em>Sample</em></a>) – Sample to be checked in the Task or a string representing start, end, or lunchbreak</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>New Task object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_station(self):</code></dt>
+<dd><p>Get Station where the Task is performed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Station object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_sample(self):</code></dt>
+<dd><p>Get Sample done through the Task</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Sample object or string representing start, end, or lunchbreak</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="checker-and-checkerlist">
+<h2>Checker and CheckerList<a class="headerlink" href="#checker-and-checkerlist" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="CheckerList">
+<em class="property">class </em><code class="sig-name descname">CheckerList</code><a class="headerlink" href="#CheckerList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Representation of a list of Checker objects</p>
+<dl class="function">
+<dt>
+<code class="sig-name descname">__init__(self):</code></dt>
+<dd><p>Initialize empty CheckerList object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self._checkerlist</strong> (<em>list</em>) – List of Checker objects</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>New CheckerList object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_checker(self, i):</code></dt>
+<dd><p>Get the ith Checker in the CheckerList</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – index</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Checker object or None Type if index is out of range</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_checkerlist(self):</code></dt>
+<dd><p>Return a iterable containing all Checker objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Iterable containing all Checker objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">shuffle_checkerlist(self):</code></dt>
+<dd><p>Randomly reorder Checker objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">add_checker(self, checkerid, startshift, endshift, daysoff, workstatus):</code></dt>
+<dd><p>Create a new Checker object and add it to the list stored in the CheckerList</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkerid</strong> (<em>string</em>) – checker ID</p></li>
+<li><p><strong>startshift</strong> (<em>list</em>) – checker earliest shift starting time [hour, minute]</p></li>
+<li><p><strong>endshift</strong> (<em>list</em>) – checker latest shift ending time [hour, minute]</p></li>
+<li><p><strong>daysoff</strong> (<em>list</em>) – list of days off indexes, e.g. [5,6] means Saturday and Sunday are days off</p></li>
+<li><p><strong>workstatus</strong> (<em>int</em>) – 0 if part-time, 1 if full-time</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">select_checkers(self, num):</code></dt>
+<dd><p>Randomly select a number of checkers and return them in the form of a new CheckerList</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num</strong> (<em>int</em>) – number of checkers to select</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>CheckerList object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_uniqueness_score(self, filename):</code></dt>
+<dd><p>Calculate and set the uniqueness score for all valid paths of each Checker</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>string</em>) – filename of sample data file</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">restructure(self):</code></dt>
+<dd><p>Reorder valid paths of each checker based on uniqueness score</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt id="reorder_checkers">
+<code class="sig-name descname">reorder_checkers</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#reorder_checkers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reorder checkers based on the total number of valid paths</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="class">
+<dt id="Checker">
+<em class="property">class </em><code class="sig-name descname">Checker</code><a class="headerlink" href="#Checker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nested class in CheckerList representing each Checker</p>
+<dl class="function">
+<dt>
+<code class="sig-name descname">__init__(self, checkerid, startshift, endshift, daysoff, workstatus):</code></dt>
+<dd><p>Initialize Checker object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self._checkerid</strong> (<em>string</em>) – checker ID</p></li>
+<li><p><strong>self._startshift</strong> (<em>list</em>) – checker earliest shift starting time [hour, minute]</p></li>
+<li><p><strong>self._endshift</strong> (<em>list</em>) – checker latest shift ending time [hour, minute]</p></li>
+<li><p><strong>self._daysoff</strong> (<em>list</em>) – list of days off indexes, e.g. [5,6] means Saturday and Sunday are days off</p></li>
+<li><p><strong>self._workstatus</strong> (<em>int</em>) – 0 if part-time, 1 if full-time</p></li>
+<li><p><strong>self._validpaths</strong> (<em>dictionary</em>) – dictionary of dictionaries with day types and starting times as keys and valid path queue s as values</p></li>
+<li><p><strong>self._taskcount</strong> (<em>int</em>) – number of tasks covered by the valid path heaps</p></li>
+<li><p><strong>self._uniqueness</strong> (<em>float</em>) – uniqueness score of the Checker</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>New Checker object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">set_uniqueness(self, value):</code></dt>
+<dd><p>Set uniqueness score</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>float</em>) – uniqueness score</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_uniqueness(self):</code></dt>
+<dd><p>Get uniqueness score</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Uniqueness score float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">checkerid(self):</code></dt>
+<dd><p>Get checker ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Checker ID string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">startshift(self):</code></dt>
+<dd><p>Get earliest shift starting time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[hour,minute] list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">endshift(self):</code></dt>
+<dd><p>Get latest shift ending time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[hour,minute] list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">daysoff(self):</code></dt>
+<dd><p>Get days off</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List of day type indexes e.g [0,6] means Monday and Sunday off</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">workstatus(self):</code></dt>
+<dd><p>Get work status</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>0 if part-time, 1 if full-time</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">validpaths(self):</code></dt>
+<dd><p>Get all valid paths of the Checker</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dictionary of dictionaries, with day types, starting times as keys and valid path queues as values</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">update_validpaths(self, heap, daytype):</code></dt>
+<dd><p>Add a heap of valid paths to the valid paths dictionary in the form of a queue based on daytype and shift starting time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>heap</strong> (<a class="reference internal" href="#MinBinaryHeap" title="MinBinaryHeap"><em>MinBinaryHeap</em></a>) – minimum binary heap containing valid paths</p></li>
+<li><p><strong>daytype</strong> (<em>string</em>) – day type associated to the paths in the heap</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">set_taskcount(self, value):</code></dt>
+<dd><p>Set task count of the Checker</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – new number of tasks</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_taskcount(self):</code></dt>
+<dd><p>Get task count of the Checker</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Int value representing the number of tasks covered by all the valid paths of the Checker</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="simple-queue">
+<h2>Simple Queue<a class="headerlink" href="#simple-queue" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="Queue">
+<em class="property">class </em><code class="sig-name descname">Queue</code><a class="headerlink" href="#Queue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simple Queue structure for storing and accessing tasks quickly</p>
+<dl class="function">
+<dt>
+<code class="sig-name descname">__init__(self):</code></dt>
+<dd><p>Initialize empty Queue</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self._queue</strong> (<em>list</em>) – list used for retrieving, changes size when retrieving elements</p></li>
+<li><p><strong>self._data</strong> (<em>list</em>) – list used for tracking data stored in the Queue, does not change once insertion is complete</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Queue object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">add(self, e):</code></dt>
+<dd><p>Add element to the Queue</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>e</strong> – element</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_first(self):</code></dt>
+<dd><p>Retrieve first element inserted into the Queue</p>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_data(self):</code></dt>
+<dd><p>Get iterable of all data previously stored in the Queue</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Iterable</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">replenish(self):</code></dt>
+<dd><p>Used to fill up the Queue with the data originally stored, once the Queue is empty, i.e. returning the Queue to its original state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">length(self):</code></dt>
+<dd><p>Return the length of the Queue, note that this is not the length of the data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="schedule">
+<h2>Schedule<a class="headerlink" href="#schedule" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="Schedule">
+<em class="property">class </em><code class="sig-name descname">Schedule</code><a class="headerlink" href="#Schedule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Monthly schedule, also representing a chromosome</p>
+<dl class="function">
+<dt>
+<code class="sig-name descname">__init__(self, checkerlist, onoff, mutationRate = None, schedule = [], month = None, year = None):</code></dt>
+<dd><p>Initialize empty Schedule</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self._schedule</strong> (<em>list</em>) – list of lists of Week Objects</p></li>
+<li><p><strong>self._checkerlist</strong> (<a class="reference internal" href="#CheckerList" title="CheckerList"><em>CheckerList</em></a>) – CheckerList object</p></li>
+<li><p><strong>self._fitness</strong> (<em>int</em>) – fitness score</p></li>
+<li><p><strong>self._onoff</strong> (<em>dictionary</em>) – on/off switch dictionary with sample ids as keys and 0 or 1 as values</p></li>
+<li><p><strong>self._month</strong> (<em>int</em>) – month of schedule</p></li>
+<li><p><strong>self._year</strong> (<em>int</em>) – year of schedule</p></li>
+<li><p><strong>self._mutationRate</strong> (<em>float</em>) – probability to mutate</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_fitness(self):</code></dt>
+<dd><p>Return fitness score</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Fitness score of schedule</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">set_fitness(self):</code></dt>
+<dd><p>Use Score = 1 + (-total_idle + total)/total + (- overlap + covered - empty)/total_paths to calculate and update fitness score</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Updated fitness score of schedule</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">mutate(self):</code></dt>
+<dd><p>Go through each day in the schedule, based on mutation rate perform mutation on day tasks, swapping previous day tasks with those in the gene pool (valid path collection)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">crossover(self, other):</code></dt>
+<dd><p>Perform crossover (with weeks as units) between self and other to create crossover offspring</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#Schedule" title="Schedule"><em>Schedule</em></a>) – the other parent schedule participating in crossover</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>New Schedule object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">update_onoff(self):</code></dt>
+<dd><p>Goes through the Schedule and updates the onoff switches based on changes that occured in the Schedule</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">initialize(self):</code></dt>
+<dd><p>Randomly create a schedule. Note that the schedule initialize function will create 6 weeks for each checker and call week.initialize(month, year) to initialize each week</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">export(self, filename):</code></dt>
+<dd><p>Export schedule to .xls file, with each Checker’s full month schedule located in separate sheets of the workbook</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>string</em>) – name of output file</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">display(self):</code></dt>
+<dd><p>Display Schedule in the terminal. Prints out day schedules assigned and displays idle time and total time of shifts for each working day</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt id="evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">gui=None</em><span class="sig-paren">)</span><a class="headerlink" href="#evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate and display the total number of samples assigned, total number of samples covered, total number of overlaps and total number of empty days. Display is done in the terminal if the gui object is None</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>gui</strong> (<em>tkinter.Text</em><em> or </em><em>None</em>) – gui object for displaying the info in the gui</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">onoff_assignment(self, iterations):</code></dt>
+<dd><p>Assigns day tasks to all checkers for each day of the month. Uses order of CheckerList to assign full month schedules one by one. For each full month schedule, it calls the week.onoff_assignment function to assign tasks for each Week object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>iterations</strong> (<em>int</em>) – the number of times to repeat the (accumulative) process of assignment over the entire CheckerList (goal is to fill up possible empty days)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">refresh(self, missing_samples, week_num):</code></dt>
+<dd><p>Update schedule based on missing samples. First, switch off missed samples, then call week.refresh for the weeks after the modification point</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>missing_samples</strong> (<em>list</em>) – list of missing sample IDs</p></li>
+<li><p><strong>week_num</strong> (<em>int</em>) – modification point, corresponds to the index of the week where the update starts, value between 0 and 5</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">evaluate_refresh(self, missing_samples, week_num, gui = None):</code></dt>
+<dd><p>Compare and evaluate refreshed schedule with previous schedule. Print out evaluations in terminal or gui</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>missing_samples</strong> (<em>list</em>) – list of missing sample IDs</p></li>
+<li><p><strong>week_num</strong> (<em>int</em>) – modification point, corresponds to the index of the week where the update starts, value between 0 and 5</p></li>
+<li><p><strong>gui</strong> (<em>tkinter.Text</em><em> or </em><em>None</em>) – gui object for displaying evaluations in the gui</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="week-and-day">
+<h2>Week and Day<a class="headerlink" href="#week-and-day" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="Week">
+<em class="property">class </em><code class="sig-name descname">Week</code><a class="headerlink" href="#Week" title="Permalink to this definition">¶</a></dt>
+<dd><p>Weekly schedule, also represents a part of the chromosome</p>
+<dl class="function">
+<dt>
+<code class="sig-name descname">__init__(self, checker, weeknumber):</code></dt>
+<dd><p>Initializes an empty Week object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self._week</strong> (<em>list</em>) – list of Day object, week schedule</p></li>
+<li><p><strong>self._checker</strong> (<a class="reference internal" href="#Checker" title="Checker"><em>Checker</em></a>) – Checker corresponding to the Week schedule</p></li>
+<li><p><strong>self._weeknumber</strong> (<em>int</em>) – the ith week (values from 1 to 6), is equal to the index of the week + 1</p></li>
+<li><p><strong>self._population</strong> (<em>dictionary</em>) – a dictionary containing all valid tasks regardless of daytype that begin at the same given starting time window</p></li>
+<li><p><strong>self._starttime</strong> (<em>list</em>) – [hour, minute], the earliest starting time possible in the 3-hour window for the week</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>New Week object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">initialize(self, month, year):</code></dt>
+<dd><p>Initialize week schedule by creating Day objects and adding them to the week schedule list, block off days off and border days not within the month, i.e. a Thursday that is in March not April, then randomly selects a earliest starting shift time, thus, determining the starting time window and setting the population. Randomly assigns day tasks from population for each Day object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>month</strong> (<em>int</em>) – month of schedule</p></li>
+<li><p><strong>year</strong> (<em>int</em>) – year of schedule</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">create_empty(self, month, year):</code></dt>
+<dd><p>Initialize week schedule by creating empty Day objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>month</strong> (<em>int</em>) – month of schedule</p></li>
+<li><p><strong>year</strong> (<em>int</em>) – year of schedule</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">onoff_assignment(self, on_off):</code></dt>
+<dd><p>Use on/off switch to restrict assignment, go through possible shift window selections, checking the windows with a larger valid path set available first. Assign tasks for each day without overlap, assign those with higher uniqueness scores first. If a window does not have enough tasks to assign a full week, we clear the week and proceed to check the next best shift window. If all windows can’t assign a full week, we clear the week, end the assignment process</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>on_off</strong> (<em>dictionary</em>) – onoff switch dictionary</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">fillup(self, on_off):</code></dt>
+<dd><p>After the full schedule of the month is generated, we go back to the weeks that have been emptied since a full week assignment was not possible and use this function to fill up the weeks as much as possible to achieve a partial week assignment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>on_off</strong> (<em>dictionary</em>) – onoff switch dictionary</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">refresh(self, onoff):</code></dt>
+<dd><p>Clear out the week and update the onoff switch, then call self.onoff_assignment to reassign tasks based on updated on/off switch</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>onoff</strong> (<em>dictionary</em>) – onoff switch dictionary</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_starttime(self):</code></dt>
+<dd><p>Get earliest shift start time within the 3-hour window</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[hour,minute] list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_population(self):</code></dt>
+<dd><p>Get dictionary containing all valid paths of the Checker corresponding to the given start_time window</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dictionary of lists, with day types as keys, and lists of valid path queues, ordered by size (total number of path in the heap)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_weeknumber(self):</code></dt>
+<dd><p>Get Week Number i meaning the ith week of the month</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Integer between 1 and 6</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_checker(self):</code></dt>
+<dd><p>Get checker associated to this week</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Checker object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_day(self, i):</code></dt>
+<dd><p>Return the corresponding day object to the index i</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – index</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Day object at index i or None if index is out of range</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_days(self):</code></dt>
+<dd><p>Iteratable that returns the Day objects in the week</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Iterable of Day objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="class">
+<dt id="Day">
+<em class="property">class </em><code class="sig-name descname">Day</code><a class="headerlink" href="#Day" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nested Day class within Week clas</p>
+<dl class="function">
+<dt>
+<code class="sig-name descname">__init__(self, path, date):</code></dt>
+<dd><p>Initialize empty Day object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self._path</strong> (<a class="reference internal" href="#Path" title="Path"><em>Path</em></a>) – Path object, i.e. the set of samples assigned to be checked on this day</p></li>
+<li><p><strong>date</strong> (<em>list</em>) – [date, daytype] list representing this day</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>New Day object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">is_empty(self):</code></dt>
+<dd><p>Checks if a Day task has been assigned to this day or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>True if a Day task is assigned, False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">set_path(self, path):</code></dt>
+<dd><p>Set the path (set of samples) of the day</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_path(self):</code></dt>
+<dd><p>Get the path (set of samples) of the day</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Path object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_date(self):</code></dt>
+<dd><p>Get the date of the day</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[date,daytype] list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">is_sat(self):</code></dt>
+<dd><p>Check if its a Saturday</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>True if Saturday, False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">is_sun(self):</code></dt>
+<dd><p>Check if its a Sunday</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>True if Sunday, False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">is_blocked(self):</code></dt>
+<dd><p>Check if the day is blocked, i.e. self._date[0] == 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>True if blocked, False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">is_dayoff(self):</code></dt>
+<dd><p>Check if its a day off</p>
+<p>rtype: True if it is a day off, False otherwise</p>
+</dd></dl>
+
+</div></blockquote>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="generation">
+<h2>Generation<a class="headerlink" href="#generation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="Generation">
+<em class="property">class </em><code class="sig-name descname">Generation</code><a class="headerlink" href="#Generation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generation of schedules</p>
+<dl class="function">
+<dt>
+<code class="sig-name descname">__init__(self, generationNumber, size, mutationRate, fitnessThreshold, month, year, onoff, checkerlist, generation = []):</code></dt>
+<dd><p>Initiate and empty Generation 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self._generation</strong> (<em>list</em>) – List of schedules in the generation</p></li>
+<li><p><strong>self._generationNumber</strong> (<em>int</em>) – generation number such as Gen 0</p></li>
+<li><p><strong>self._size</strong> (<em>int</em>) – number of schedules in the generation</p></li>
+<li><p><strong>self._mutationRate</strong> (<em>float</em>) – the probability of mutation during reproduction for all individuals</p></li>
+<li><p><strong>self._fitnessThreshold</strong> (<em>float</em>) – the minimum fitness score an individual must have to participate in reproduction (added to the mating pool)</p></li>
+<li><p><strong>self._month</strong> (<em>int</em>) – month of schedule</p></li>
+<li><p><strong>self._year</strong> (<em>int</em>) – year of schedule</p></li>
+<li><p><strong>self._onoff</strong> (<em>dictionary</em>) – onoff switch dictionary</p></li>
+<li><p><strong>self._checkerlist</strong> – CheckerList object</p></li>
+<li><p><strong>self._mating_pool</strong> (<em>list</em>) – list of individuals that are capable of participating in reproduction</p></li>
+<li><p><strong>self._elites</strong> (<em>list</em>) – list of individuals that are capable of moving directly into the next generation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>self._checkerlist: CheckerList</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>New Generation object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">initialize(self):</code></dt>
+<dd><p>Randomly initialize a generation of schedules –&gt; Gen 0, use self._size to create a fixed number of Schedules then call Schedule.initialize to initialize each Schedule</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">natural_selection(self):</code></dt>
+<dd><p>Calculate and normalize fitness scores of the generation. Based on fitness scores, eliminate individuals from reproduction and add those who are capable to the mating pool. Those with higher fitness scores get added a larger number of times, corresponding to a higher possibility of reproducing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">reproduce(self):</code></dt>
+<dd><p>Randomly select two parent schedules from the mating pool to perform crossover, creating one new child schedule, and letting it mutate. The process is repeated until the number of offspring is equal to the required generation size. Return the next generation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Next Generation</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><dl class="function">
+<dt>
+<code class="sig-name descname">get_bestIndividual(self):</code></dt>
+<dd><p>Find the schedule with the best fitness score and return it</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Schedule object with the best fitness score in the Generation</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">BFE Task Assignment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quick.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">Utility Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#graph">Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#minimum-binary-heap">Minimum Binary Heap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#path">Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#checker-and-checkerlist">Checker and CheckerList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simple-queue">Simple Queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#schedule">Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#week-and-day">Week and Day</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generation">Generation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graph.html">Valid Task Gathering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onoff.html">On/Off Switch Task Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genetic.html">Genetic Algorithm</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="utility.html" title="previous chapter">Utility Functions</a></li>
+      <li>Next: <a href="graph.html" title="next chapter">Valid Task Gathering</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Yiming Huang, Nelson Pereira, Thierry Zhao, Yixin Gu, William Zhang.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/classes.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

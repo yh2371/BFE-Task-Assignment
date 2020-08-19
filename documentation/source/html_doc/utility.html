@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Utility Functions &#8212; BFE Task Assignment 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Classes" href="classes.html" />
+    <link rel="prev" title="Quick Start" href="quick.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="utility-functions">
+<h1>Utility Functions<a class="headerlink" href="#utility-functions" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>This section contains documentation on all the utility functions used in this project.</p>
+<div class="section" id="date-and-time-formatting">
+<h2>Date and Time Formatting<a class="headerlink" href="#date-and-time-formatting" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="sig-name descname">format_time(time):</code></dt>
+<dd><p>Formats a time string into a list of the form [hour, time]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>time</strong> (<em>string</em>) – read from file, e.g. “14:20”</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list of integers in the form [hour, minute] where hour is between 0 and 23 and minute is between 0 and 59</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">get_daystypes(year=None, month=None):</code></dt>
+<dd><p>Yield iteration of day type of each day in given month/year, if no month/year is specified, the current month/year will be chosen</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>year</strong> (<em>int</em><em> or </em><em>None</em>) – year number</p></li>
+<li><p><strong>month</strong> (<em>int</em><em> or </em><em>None</em>) – month number</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Iteration of [date, daytype] objects. The date corresponds to the date in the month, if date == 0 then the object is from the previous/next month. The daytype is an int with the following correspondence 0-Monday, .., 6-Sunday</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">get_daysinmonth(year=None, month=None):</code></dt>
+<dd><p>Returns number of days in given month/year, if no month/year is specified, the current month/year will be chosen</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>year</strong> (<em>int</em><em> or </em><em>None</em>) – year number</p></li>
+<li><p><strong>month</strong> (<em>int</em><em> or </em><em>None</em>) – month number</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Number of days (int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">get_daytype(s):</code></dt>
+<dd><p>Changes a daytype string to its corresponding daytype index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s</strong> – daytype string e.g. “MON”</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Daytype index (int) e.g. 0 for “MON”</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">get_daytypes_week(weeknumber, year=None, month=None):</code></dt>
+<dd><p>Yield iteration of day type of each day in the selected week of the given month/year, if no month/year is specified, the current month/year will be chosen</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>weeknumber</strong> (<em>int</em>) – index corresponding to the week in the month, value ranges between 0 and 5</p></li>
+<li><p><strong>year</strong> (<em>int</em><em> or </em><em>None</em>) – year number</p></li>
+<li><p><strong>month</strong> (<em>int</em><em> or </em><em>None</em>) – month number</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Iteration of [date, daytype] objects. The date corresponds to the date in the month, if date == 0 then the object is from the previous/next month. The daytype is an int with the following correspondence 0-Monday, .., 6-Sunday</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">get_difference(t1, t2):</code></dt>
+<dd><p>Compute time in minutes needed to get from time t2 to time t1</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t1</strong> (<em>time list of the form</em><em> [</em><em>hour</em><em>, </em><em>minute</em><em>]</em>) – end time</p></li>
+<li><p><strong>t2</strong> (<em>time list of the form</em><em> [</em><em>hour</em><em>, </em><em>minute</em><em>]</em>) – start time</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Time difference in minutes (int) or -1 if t1 &lt; t2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">update(t2, t):</code></dt>
+<dd><p>Update the time of day after t minutes have passed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t2</strong> (<em>time list of the form</em><em> [</em><em>hour</em><em>, </em><em>minute</em><em>]</em>) – previous time of day</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – the number of minutes that have passed by since t2</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Current time of day in the form of [hour, minute]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="data-processing">
+<h2>Data Processing<a class="headerlink" href="#data-processing" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="sig-name descname">clean_data(filename):</code></dt>
+<dd><p>Reads the base sample data file, calculates round trip durations, and exports to a new data file cleaned_data.csv</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>string</em>) – filename of base sample data file</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">select_cleaned_data(filename, numofsamples):</code></dt>
+<dd><p>Randomly selects a set of samples for schedule generation and exports to a new data file sample450.csv</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>string</em>) – filename of cleaned sample data file</p></li>
+<li><p><strong>numofsamples</strong> (<em>list of int</em>) – list containing number of samples corresponding to weekday, saturday, sunday</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">get_clean_data(filename, borough, daytype):</code></dt>
+<dd><p>Retrieve clean data from the cleaned data file corresponding to the given borough and daytype</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>string</em>) – filename of cleaned sample data file</p></li>
+<li><p><strong>borough</strong> (<em>string</em>) – borough ID</p></li>
+<li><p><strong>day_type</strong> – day type, weekday, saturday or sunday</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Returns the following lists of sample information: origins (strings), origin coordintaes ([long, lat]), destinations (strings), destination coordinates ([long, lat]), departure times ([hour,minute]), arrival times ([hour,minute]), route ids (strings), sample ids (strings)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">get_checker_data(filename):</code></dt>
+<dd><p>Retrieve information about the checkers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>string</em>) – filename of the checker data file</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Returns two list corresponding to Full-time checker and Part-time checker info, each element in the list is a tuple of the form (checker id, shift: (start, end):, shift duration, list of index of days off):</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">get_onandoff_sample(filename):</code></dt>
+<dd><p>Retrieves on/off switch initial information to create an on/off switch dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param(filename)</dt>
+<dd class="field-odd"><p>filename of sample file</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Returns a dictionary with sample ids as keys and 0 as values</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">display(schedule):</code></dt>
+<dd><p>Takes a Schedule object and prints out the formatted schedule in the terminal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>schedule</strong> (<a class="reference internal" href="classes.html#Schedule" title="Schedule"><em>Schedule</em></a>) – generated schedule to be displayed</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">displaytime(time):</code></dt>
+<dd><p>Converts a [hour, time] list into a time string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>time</strong> (<em>list of int</em>) – [hour, time] representation of time</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>String format of time, e.g. “17:45”</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">weight_function(curr_time, borough, day_type):</code></dt>
+<dd><p>Calculates the weight of edges (traveling time) in minutes. The data is retrieved based on 8:00 AM OTP data if current time of day is before noon, otherwise data is retrieved based on 2:00 PM OTP data. A time buffer of 15 minutes is added, for traveling times exceeding 2 hours, the traveling time is set to 2 hours.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>curr_time</strong> (<em>int</em>) – current time period of day indicator, 0-morning, 1-evening</p></li>
+<li><p><strong>borough</strong> (<em>string</em>) – borough ID</p></li>
+<li><p><strong>day_type</strong> (<em>string</em>) – day type, weekday, saturday or sunday</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Dictionary of dictionaries with stations names as ids and traveling time in minutes as values. Access a value using dict[destination][origin]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">construct_checkerlist(filename):</code></dt>
+<dd><p>Retrieves info from checker info file and turns in into a CheckerList object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>string</em>) – filename of checker data file</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>An CheckerList object containing information about all checkers</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">create_graph(filename, borough, daytype):</code></dt>
+<dd><p>Creates a graph corresponding to a given borough and day type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>string</em>) – filename of sample data</p></li>
+<li><p><strong>borough</strong> (<em>string</em>) – borough ID</p></li>
+<li><p><strong>day_type</strong> – day type, weekday, saturday or sunday</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>A Graph object corresponding to a given borough and day type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">get_ratio(checkerlist, numofsamples, month=None, year=None):</code></dt>
+<dd><p>Calculates the number of samples needed in the random sample set for weekdays saturdays, sundays based on month info and checker availability</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkerlist</strong> (<a class="reference internal" href="classes.html#CheckerList" title="CheckerList"><em>CheckerList</em></a>) – checker info</p></li>
+<li><p><strong>numofsamples</strong> (<em>int</em>) – number of samples to be in the random sample set</p></li>
+<li><p><strong>month</strong> (<em>int</em><em> or </em><em>None</em>) – month of schedule</p></li>
+<li><p><strong>year</strong> (<em>int</em><em> or </em><em>None</em>) – year of schedule</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list of the number of samples to be selected for the random sample set for each daytype in the order [weekday, saturday, sunday]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="sig-name descname">evaluate_tasks(checkerlist, filename):</code></dt>
+<dd><p>Checks how many samples from the sample set are included in the valid tasks gathered</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkerlist</strong> (<a class="reference internal" href="classes.html#CheckerList" title="CheckerList"><em>CheckerList</em></a>) – object containing checker info and valid task info</p></li>
+<li><p><strong>filename</strong> (<em>string</em>) – filename of sample file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Number of unique samples covered by the valid tasks and a list of sample ids representing samples not covered by the valid tasks gathered</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="sig-name descname">matrixScore(schedule):</code></dt>
+<dd><p>Calculates the total number of samples completed, total idle time, total percentage of basis completed, total time, and number of empty days</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>schedule</strong> (<a class="reference internal" href="classes.html#Schedule" title="Schedule"><em>Schedule</em></a>) – the schedule to be evaluated</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Total number of samples completed (int), total idle time in minutes (int), total percentage of basis completed (float), total time in minutes (int), and number of empty days (int)</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="sig-name descname">calculate_fitness(schedule):</code></dt>
+<dd><p>Calculates the fitness score of the schedule</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>schedule</strong> (<a class="reference internal" href="classes.html#Schedule" title="Schedule"><em>Schedule</em></a>) – the schedule to be evaluated</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Fitness score of the schedule (float)</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="sig-name descname">get_invalid(checkerlist, filename):</code></dt>
+<dd><p>Calculate the number of samples not covered by valid tasks for each day type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>checkerlist</strong> (<a class="reference internal" href="classes.html#CheckerList" title="CheckerList"><em>CheckerList</em></a>) – checker info</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>The number of samples not covered by valid tasks in the order weekday, saturday, sunday</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">evaluate_empty_days(checkerlist, filename, schedule2, daycounts, gui=None):</code></dt>
+<dd><p>Calculate and display the number of valid tasks remaining, the number of empty days for each day type for each checker and the total number of samples covered for each daytype</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkerlist</strong> (<a class="reference internal" href="classes.html#CheckerList" title="CheckerList"><em>CheckerList</em></a>) – checker info</p></li>
+<li><p><strong>filename</strong> (<em>string</em>) – filename of sample data file</p></li>
+<li><p><strong>schedule2</strong> (<a class="reference internal" href="classes.html#Schedule" title="Schedule"><em>Schedule</em></a>) – generated schedule</p></li>
+<li><p><strong>daycounts</strong> (<em>list of int</em>) – list of number of samples for each day type in the sample set</p></li>
+<li><p><strong>gui</strong> (<em>Tkints.Text</em><em> or </em><em>None</em>) – a tkinter text object to display info in gui, if None, then info is printed in the terminal</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-name descname">get_random_missing(schedule, num):</code></dt>
+<dd><p>Randomly select a number of samples assigned in the schedule to fail. Updates schedule on/off to reflect the failure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>schedule</strong> (<a class="reference internal" href="classes.html#Schedule" title="Schedule"><em>Schedule</em></a>) – generated schedule</p></li>
+<li><p><strong>num</strong> (<em>int</em>) – number of failed samples</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Schedule object with failed samples information included</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">BFE Task Assignment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quick.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utility Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#date-and-time-formatting">Date and Time Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-processing">Data Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluation">Evaluation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph.html">Valid Task Gathering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onoff.html">On/Off Switch Task Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genetic.html">Genetic Algorithm</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="quick.html" title="previous chapter">Quick Start</a></li>
+      <li>Next: <a href="classes.html" title="next chapter">Classes</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Yiming Huang, Nelson Pereira, Thierry Zhao, Yixin Gu, William Zhang.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/utility.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

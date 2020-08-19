@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Quick Start &#8212; BFE Task Assignment 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Utility Functions" href="utility.html" />
+    <link rel="prev" title="BFE Task Assignment System Documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="quick-start">
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>The BFE Task Assignment System consists of a set of source codes and a simple GUI. In this section we will briefly introduce the content of the source files and provide a quick start tutorial for using the GUI.</p>
+<div class="section" id="source-code-files">
+<h2>Source Code Files<a class="headerlink" href="#source-code-files" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>bfehelper.py : Utility Functions</p></li>
+<li><p>bfeclasses.py : All Classes</p></li>
+<li><p>shortestpath.py : Graph-based Functions</p></li>
+<li><p>onoff.py : On/Off Schedule Generating Functions</p></li>
+<li><p>genetic.py : Genetic Algorithm</p></li>
+<li><p>main.py : Main file that can be modified for command line execution and testing</p></li>
+</ul>
+</div>
+<div class="section" id="graphic-user-interface">
+<h2>Graphic User Interface<a class="headerlink" href="#graphic-user-interface" title="Permalink to this headline">¶</a></h2>
+<p>To start the GUI, run the file gui.py.</p>
+<a class="reference internal image-reference" href="_images/gui.png"><img alt="_images/gui.png" src="_images/gui.png" style="width: 600px;" /></a>
+<p>Filenames should be a path to the corresponding file. Note that all data files are assumed to be .csv files.</p>
+<p>Available functionalities:</p>
+<ul class="simple">
+<li><p>Task Gathering: Collects information on all valids tasks for all checkers. Only needs to be run once per dataset used.</p></li>
+<li><p>Generate Schedule: After task gathering is complete, a schedule can be generated.</p></li>
+<li><p>Export Schedule: Exports the most recent generated schedule to sample.xls spreadsheet</p></li>
+<li><p>Clear: Clears all information</p></li>
+</ul>
+<p>Features to be included:</p>
+<ul class="simple">
+<li><p>Importing previous schedules for rescheduling</p></li>
+<li><p>Rescheduling based on input data (currently implemented to be done randomly for demo purposes)</p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">BFE Task Assignment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#source-code-files">Source Code Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graphic-user-interface">Graphic User Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">Utility Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph.html">Valid Task Gathering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onoff.html">On/Off Switch Task Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genetic.html">Genetic Algorithm</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">BFE Task Assignment System Documentation</a></li>
+      <li>Next: <a href="utility.html" title="next chapter">Utility Functions</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Yiming Huang, Nelson Pereira, Thierry Zhao, Yixin Gu, William Zhang.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/quick.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

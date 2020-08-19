@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>BFE Task Assignment System Documentation &#8212; BFE Task Assignment 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quick Start" href="quick.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="bfe-task-assignment-system-documentation">
+<h1>BFE Task Assignment System Documentation<a class="headerlink" href="#bfe-task-assignment-system-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quick.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quick.html#source-code-files">Source Code Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick.html#graphic-user-interface">Graphic User Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">Utility Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utility.html#date-and-time-formatting">Date and Time Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html#data-processing">Data Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html#evaluation">Evaluation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#graph">Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#minimum-binary-heap">Minimum Binary Heap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#path">Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#checker-and-checkerlist">Checker and CheckerList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#simple-queue">Simple Queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#schedule">Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#week-and-day">Week and Day</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#generation">Generation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graph.html">Valid Task Gathering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graph.html#time-constrained-k-shortest-path-algorithm">Time Constrained K Shortest Path Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graph.html#valid-path-gathering">Valid Path Gathering</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="onoff.html">On/Off Switch Task Assignment</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="genetic.html">Genetic Algorithm</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The Bus Fare Evasion Task Assignment System is a python-based project that automatically generates a monthly schedule of checks of bus round trips for a group of checkers.</p>
+<p>Project Members:</p>
+<div class="line-block">
+<div class="line">Nelson Pereira <a class="reference external" href="mailto:np1659&#37;&#52;&#48;nyu&#46;edu">np1659<span>&#64;</span>nyu<span>&#46;</span>edu</a></div>
+<div class="line">Thierry Zhao <a class="reference external" href="mailto:sz2334&#37;&#52;&#48;nyu&#46;edu">sz2334<span>&#64;</span>nyu<span>&#46;</span>edu</a></div>
+<div class="line">Yiming Huang <a class="reference external" href="mailto:yh2371&#37;&#52;&#48;nyu&#46;edu">yh2371<span>&#64;</span>nyu<span>&#46;</span>edu</a></div>
+<div class="line">Yixin Gu <a class="reference external" href="mailto:yg1482&#37;&#52;&#48;nyu&#46;edu">yg1482<span>&#64;</span>nyu<span>&#46;</span>edu</a></div>
+<div class="line">William Zhang <a class="reference external" href="mailto:wz1028&#37;&#52;&#48;nyu&#46;edu">wz1028<span>&#64;</span>nyu<span>&#46;</span>edu</a></div>
+</div>
+<p>Documentation written by:</p>
+<p>Yiming Huang <a class="reference external" href="mailto:yh2371&#37;&#52;&#48;nyu&#46;edu">yh2371<span>&#64;</span>nyu<span>&#46;</span>edu</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>
+<p>PIC Math is a program of the Mathematical Association of America (MAA). Support for this MAA program is provided by the National Science Foundation (NSF grant DMS-1722275), National Security Agency (NSA), and New York University.</p>
+<p>We would like to give special thanks to our faculty advisors, Vindya Bhat and Xinmeng Li, our industry partner, New York City Transit, and our industry liaisons, Timon Stasko and Erik Jensen.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">BFE Task Assignment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quick.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">Utility Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph.html">Valid Task Gathering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onoff.html">On/Off Switch Task Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genetic.html">Genetic Algorithm</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="quick.html" title="next chapter">Quick Start</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Yiming Huang, Nelson Pereira, Thierry Zhao, Yixin Gu, William Zhang.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
